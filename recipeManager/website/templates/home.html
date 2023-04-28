@@ -1,0 +1,16 @@
+<a href="{% url 'add_recipe' %}">Add New Recipe</a>
+<a href="{% url 'charts' %}">See the charts</a>
+<h1>Recipe Database</h1>
+
+{% for recipe in recipe_list %}
+    <h3 style="color:brown">{{ recipe.recipe_name }}</h3>
+    <p><strong>Serves:</strong>  {{ recipe.servings }} people.</p>
+    <p><strong>Prep time:</strong>   {{ recipe.prep_time }} minutes.</p>
+    <p><strong>Cook time:</strong>   {{ recipe.cook_time }} minutes.</p>
+    <p><strong>Ingredients:</strong>   {{ recipe.ingredient_list }}</p>
+    <p><strong>Instructions:</strong>  {{ recipe.instructions }}</p>
+    <p><strong>Category:</strong>  {{ recipe.category }}</p>
+    <p><strong>Difficulty:</strong>  {{ recipe.difficulty }}</p>
+    <a href="{% url 'update_recipe' recipe.id %}">Update Recipe</a>
+    <a href="{% url 'delete_recipe' recipe.id %}">Delete Recipe</a><hr>
+{% endfor %}

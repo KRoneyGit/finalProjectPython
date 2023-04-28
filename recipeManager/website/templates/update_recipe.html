@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Update Recipe</h1>
+    {{ recipe }}
+        <form method="POST" action="{% url 'update_recipe' recipe_id %}">
+        {% csrf_token %}
+        <div>
+            <label for="recipe_name">Recipe Name:</label>
+            <input type="text" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}" />
+        </div>
+        <div>
+            <label for="servings">How many people this recipe serves:</label>
+            <input type="number" min="1" id="servings" name="servings" value="{{ recipe.servings }}" />
+        </div>
+        <div>
+            <label for="prep_time">Prep time:</label>
+            <input type="number" min="0" id="prep_time" name="prep_time" value="{{ recipe.prep_time }}" />
+        </div>
+        <div>
+            <label for="cook_time">Cook time:</label>
+            <input type="number" min="0" id="cook_time" name="cook_time" value="{{ recipe.cook_time }}" />
+        </div>
+        <div>
+            <label for="ingredient_list">Ingredient list:</label>
+            <input type="text" id="ingredient_list" name="ingredient_list" value="{{ recipe.ingredient_list }}" />
+        </div>
+        <div>
+            <label for="instructions">Instructions:</label>
+            <input type="text" id="instructions" name="instructions" value="{{ recipe.instructions }}" />
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select name="category" id="category" value="{{ recipe.category }}">
+                <option value="Entree">Entree</option>
+                <option value="Side">Side</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Snack">Snack</option>
+            </select>
+        </div>
+        <div>
+            <label for="difficulty">Difficulty:</label>
+            <select name="difficulty" id="difficulty" value="{{ recipe.difficulty }}">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Update Recipe</button>
+        </div>
+    </form>
+</body>
+</html>
